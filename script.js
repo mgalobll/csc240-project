@@ -22,7 +22,7 @@ function initTimer() {
 function flipCard({target: clickedCard}) {
     if(!isPlaying) {
         isPlaying = true;
-        timer = setInterval(initTimer, 1000);
+        timer = setInterval(initTimer, 60);
     }
     if(clickedCard !== cardOne && !disableDeck && timeLeft > 0) {
         flips++;
@@ -43,6 +43,7 @@ function matchCards(img1, img2) {
     if(img1 === img2) {
         matchedCard++;
         if(matchedCard == 8 && timeLeft > 0) {
+            myPlay();
             return clearInterval(timer);
         }
         cardOne.removeEventListener("click", flipCard);
@@ -93,3 +94,8 @@ refreshBtn.addEventListener("click", shuffleCard);
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
 });
+
+function playVictorySound(){
+    var audio = new Audio("uefa-champions-league-official-theme-song.mp3");
+    audio.play();
+}
