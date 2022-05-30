@@ -21,7 +21,7 @@ body{
 }
 ::selection{
   color: #fff;
-  background: #800000;
+  background: #131635;
 }
 .wrapper{
   padding: 25px;
@@ -121,13 +121,13 @@ body{
 }
 .details button{
   font-size: 14px;
-  color: #800000;
+  color: #131635;
   border-radius: 4px;
   padding: 4px 11px;
   background: #fff;
-  border: 2px solid #800000;
+  border: 2px solid #131635;
 }
 .details button:hover{
   color: #fff;
-  background: #800000;
+  background: #131635;
 }
