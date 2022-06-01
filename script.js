@@ -23,7 +23,7 @@ function initTimer() {
 function flipCard({target: clickedCard}) {
     if(!isPlaying) {
         isPlaying = true;
-        timer = setInterval(initTimer, 60);
+        timer = setInterval(initTimer, 1000);
     }
     if(clickedCard !== cardOne && !disableDeck) {
         clickedCard.classList.add("flip");
