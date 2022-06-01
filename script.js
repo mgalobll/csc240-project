@@ -42,7 +42,7 @@ function flipCard({target: clickedCard}) {
 function matchCards(img1, img2) {
     if(img1 === img2) {
         matchedCard++;
-        if(matchedCard == 8 && timeLeft > 0) {
+        if(matchedCard == 1 && timeLeft > 0) {
             return clearInterval(timer);
         }
         cardOne.removeEventListener("click", flipCard);
