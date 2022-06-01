@@ -2,6 +2,13 @@ const cards = document.querySelectorAll(".card"),
 timeTag = document.querySelector(".time b"),
 correctTag = document.querySelector(".correct b"),
 refreshBtn = document.querySelector(".details button");
+// document.body.innerHTML += ' <div class="pyro"></div>';
+var pyro = document.createElement('div');
+pyro.className = 'pyro';
+pyro.innerHTML = '<div class="before"></div><div class="after"></div>';
+pyro.setAttribute("hidden","true");
+document.body.insertBefore(pyro, document.getElementById('body'));
+
 
 let maxTime = 60;
 let timePassed = 0;
@@ -11,7 +18,8 @@ let isPlaying = false;
 let cardOne, cardTwo, timer;
 
 function initTimer() {
-    if(matchedCard == 8) {
+    if(matchedCard == 1) {
+        addFirework();
         return clearInterval(timer);
     }
     timePassed++;
@@ -76,6 +84,8 @@ function shuffleCard() {
     disableDeck = false;
     isPlaying = false;
 
+    removeFirework();
+
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
     arr.sort(() => Math.random() > 0.5 ? 1 : -1);
 
@@ -105,4 +115,12 @@ cards.forEach(card => {
 function playVictorySound(){
     var audio = new Audio("uefa-champions-league-official-theme-song.mp3");
     audio.play();
+}
+
+function addFirework(){
+   document.getElementsByClassName("pyro")[0].removeAttribute("hidden");
+}
+
+function removeFirework(){
+    document.getElementsByClassName("pyro")[0].setAttribute("hidden","true");
 }
