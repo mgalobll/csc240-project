@@ -23,7 +23,7 @@ function initTimer() {
 function flipCard({target: clickedCard}) {
     if(!isPlaying) {
         isPlaying = true;
-        timer = setInterval(initTimer, 1000);
+        timer = setInterval(initTimer, 60);
     }
     if(clickedCard !== cardOne && !disableDeck) {
         clickedCard.classList.add("flip");
@@ -111,3 +111,8 @@ refreshBtn.addEventListener("click", shuffleCard);
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
 });
+
+function playVictorySound(){
+    var audio = new Audio("uefa-champions-league-official-theme-song.mp3");
+    audio.play();
+}
