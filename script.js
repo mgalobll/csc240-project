@@ -1,6 +1,6 @@
 const cards = document.querySelectorAll(".card"),
 timeTag = document.querySelector(".time b"),
-correctTag = document.querySelector(".correct b"),
+bestTag = document.querySelector(".correct b"),
 refreshBtn = document.querySelector(".details button");
 
 let maxTime = 60;
@@ -8,6 +8,8 @@ let timePassed = 0;
 let matchedCard = 0;
 let disableDeck = false;
 let isPlaying = false;
+var bestScore = Infinity;
+var startBestScore = "N/A";
 let cardOne, cardTwo, timer;
 
 function initTimer() {
@@ -39,10 +41,12 @@ function flipCard({target: clickedCard}) {
 function matchCards(img1, img2) {
     if(img1 === img2) {
         matchedCard++;
-        correctTag.innerText = matchedCard;
         if(matchedCard == 8) {
             isPlaying = false;
-
+            if (timePassed < bestScore) {
+                bestScore = timePassed;
+                bestTag.innerText = timePassed + "s";
+            }
             return clearInterval(timer);
         }
         cardOne.removeEventListener("click", flipCard);
@@ -73,7 +77,12 @@ function shuffleCard() {
     cardTwo = "";
     clearInterval(timer);
     timeTag.innerText = timePassed;
-    correctTag.innerText = matchedCard;
+    if (bestScore == Infinity) {
+        bestTag.innerText = "N/A";
+    }
+    else {
+        bestTag.innerText = bestScore + "s";
+    }
     disableDeck = false;
     isPlaying = false;
 
