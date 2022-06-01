@@ -42,6 +42,7 @@ function matchCards(img1, img2) {
     if(img1 === img2) {
         matchedCard++;
         if(matchedCard == 8) {
+            playVictorySound();
             isPlaying = false;
             if (timePassed < bestScore) {
                 bestScore = timePassed;
@@ -111,8 +112,3 @@ refreshBtn.addEventListener("click", shuffleCard);
 cards.forEach(card => {
     card.addEventListener("click", flipCard);
 });
-
-function playVictorySound(){
-    var audio = new Audio("uefa-champions-league-official-theme-song.mp3");
-    audio.play();
-}
