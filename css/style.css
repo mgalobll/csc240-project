@@ -133,6 +133,10 @@ p{
   transform: rotateY(0);
 }
 
+#detail-bar {
+  display: contents;
+}
+
 .details{
   width: 100%;
   margin-top: 15px;
