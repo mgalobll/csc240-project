@@ -3,7 +3,13 @@ timeTag = document.querySelector(".time b"),
 bestTag = document.querySelector(".correct b"),
 refreshBtn = document.querySelector(".details button");
 
-let maxTime = 60;
+var pyro = document.createElement('div');
+pyro.className = 'pyro';
+pyro.innerHTML = '<div class="before"></div><div class="after"></div>';
+pyro.setAttribute("hidden","true");
+document.body.insertBefore(pyro, document.getElementById('body'));
+
+
 let timePassed = 0;
 let matchedCard = 0;
 let disableDeck = false;
@@ -43,6 +49,7 @@ function matchCards(img1, img2) {
         matchedCard++;
         if(matchedCard == 8) {
             playVictorySound();
+            addFirework();
             isPlaying = false;
             if (timePassed < bestScore) {
                 bestScore = timePassed;
@@ -87,6 +94,8 @@ function shuffleCard() {
     disableDeck = false;
     isPlaying = false;
 
+    removeFirework();
+
     let arr = [1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8];
     arr.sort(() => Math.random() > 0.5 ? 1 : -1);
 
@@ -101,9 +110,17 @@ function shuffleCard() {
 }
 
 function playVictorySound(){
-    var audio = new Audio("uefa-champions-league-official-theme-song.mp3");
+    var audio = new Audio("music/uefa-champions-league-official-theme-song.mp3");
     audio.play();
 }
+
+function addFirework(){
+    document.getElementsByClassName("pyro")[0].removeAttribute("hidden");
+ }
+ 
+function removeFirework(){
+     document.getElementsByClassName("pyro")[0].setAttribute("hidden","true");
+ }
 
 shuffleCard();
 
